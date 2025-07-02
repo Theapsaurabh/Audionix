@@ -1,2 +1,2 @@
-# Audionix
-🎧 A full-stack music streaming web app like Spotify — built with modern web tech. Stream, explore, and enjoy music with Audionix.
+# Spotify
+A full-stack music streaming web application inspired by Spotify. Stream songs, explore playlists, search artists, and enjoy your favorite tracks — all in one place.
