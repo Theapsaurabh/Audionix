@@ -1,7 +1,7 @@
 
-import {Song} from "../models/song.model"
-import {album} from "../models/album.model"
-import cloudinary from "../lib/cloudinary"
+import {Song} from "../models/song.model.js"
+import {album} from "../models/album.model.js"
+import cloudinary from "../lib/cloudinary.js"
 // helper for cloudinary upload
 const uploadToCloudinary= async(file)=>{
     try{
@@ -120,4 +120,11 @@ export const deleteAlbum= async(req,res,next)=>{
         
     }
     
+}
+
+export const checkAdmin= async(req,res,next)=>{
+    res.status(200).json({
+        admin:true,
+       
+    })
 }

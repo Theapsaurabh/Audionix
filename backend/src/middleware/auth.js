@@ -25,7 +25,7 @@ try{
     next()
 
 }catch(error){
-    return res.status(500)({message:"Internal server error ", error})
+    next(error);
 
 }
 }
