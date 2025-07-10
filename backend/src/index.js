@@ -10,7 +10,7 @@ import songRoutes from "./routes/song.route.js"
 import albumRoutes from "./routes/album.route.js"
 import statsRoute from "./routes/stats.route.js"
 import { clerkMiddleware } from '@clerk/express'
-
+import cors from "cors"
 
 
 dotenv.config()
@@ -18,6 +18,12 @@ const app= express();
 const __dirname= path.resolve();
 app.use(express.json());
 const PORT= process.env.PORT || 5000
+app.use(cors(
+    {
+        origin: "http://localhost:3000",
+        credentials:true
+    }
+))
 
 app.use(clerkMiddleware()) // this will add auth to req object=> req.auth.userID
 app.use(fileUpload({

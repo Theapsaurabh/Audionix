@@ -1,5 +1,5 @@
 import {User} from "../models/user.model.js"
-export const authCallback= async(req,res)=>{
+export const authCallback= async(req,res,next)=>{
    try{
     const {id,firstName, lastName, imageUrl}=req.body;
 
@@ -8,7 +8,7 @@ export const authCallback= async(req,res)=>{
         // sign up
         await User.create({
             clerkId:id,
-            fullName:`${firstName}${lastName}`,
+            fullName:`${firstName} ${lastName}`,
             imageUrl
         })
     }
