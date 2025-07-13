@@ -1,6 +1,6 @@
 
 import {Song} from "../models/song.model.js"
-import {album} from "../models/album.model.js"
+import {Album} from "../models/album.model.js"
 import cloudinary from "../lib/cloudinary.js"
 // helper for cloudinary upload
 const uploadToCloudinary= async(file)=>{
@@ -70,7 +70,7 @@ export const deleteSong= async(req,res,next)=>{
         const song= await Song.findById(id)
         // if songs belongs to albums then update the albums array
         if(song.albumID){
-            await album.findByIdAndUpdate(song.albumID,{
+            await Album.findByIdAndUpdate(song.albumID,{
                 $pull: {songs: song._id},
         })
         }

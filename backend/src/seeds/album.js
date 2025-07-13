@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { Song } from "../models/song.model.js";
-import { album } from "../models/album.model.js";
+import { Album } from "../models/album.model.js";
 
 
 
@@ -13,7 +13,7 @@ const seedDatabase = async () => {
 		await mongoose.connect(process.env.MONGODB_URI);
 
 		
-		await album.deleteMany({});
+		await Album.deleteMany({});
 
 		await Song.deleteMany({});
 
@@ -166,7 +166,7 @@ const seedDatabase = async () => {
 		];
 
 		
-		const createdAlbums = await album.insertMany(albums);
+		const createdAlbums = await Album.insertMany(albums);
 
 
 		

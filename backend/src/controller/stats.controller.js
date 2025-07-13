@@ -1,4 +1,4 @@
-import { album } from "../models/album.model.js";
+import { Album } from "../models/album.model.js";
 import { Song } from "../models/song.model.js";
 import { User } from "../models/user.model.js";
 
@@ -9,7 +9,7 @@ export const getStats=  async (req, res, next) => {
       await Promise.all([
         Song.countDocuments(),
         User.countDocuments(),
-        album.countDocuments(),
+        Album.countDocuments(),
 
         Song.aggregate([
           {
