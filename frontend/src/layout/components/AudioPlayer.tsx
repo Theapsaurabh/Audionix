@@ -2,9 +2,7 @@
 
 const AudioPlayer = () => {
   return (
-    <div>
-      
-    </div>
+   <audio/>
   )
 }
 
