@@ -6,6 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Clock, Pause, Play } from "lucide-react";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 
+ export const formatTime= (seconds:number)=>{
+  const minutes= Math.floor(seconds/60);
+  const remainingSecond= Math.floor(seconds %60);
+  return `${minutes}:${remainingSecond.toString().padStart(2,"0")}`
+}
+
 const AlbumPage = () => {
   const { albumId } = useParams();
   const { fetchAlbumById, currentAlbum, isLoading } = useMusicStore();

@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import FeaturedSection from "./components/FeaturedSection";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import SectionGrid from "./components/SectionGrid";
+import { usePlayerStore } from "@/stores/usePlayerStore";
+import { all } from "axios";
 
 const HomePage = () => {
   const {
@@ -15,12 +17,18 @@ const HomePage = () => {
     madeForYouSongs,
     featuredSongs,
   } = useMusicStore();
-
+const {initializedQueue}= usePlayerStore()
   useEffect(() => {
     fetchFeaturedSongs();
     fetchMadeForYouSongs();
     fetchTrendingSongs();
   }, [fetchFeaturedSongs, fetchMadeForYouSongs, fetchTrendingSongs]);
+  useEffect(()=>{
+    if(madeForYouSongs.length>0 && featuredSongs.length>0 && trendingSongs.length>0){
+      const allSongs= [...featuredSongs,...madeForYouSongs,...trendingSongs];
+      initializedQueue(allSongs);
+    }
+  }, [initializedQueue, madeForYouSongs,featuredSongs,trendingSongs]);
 
   return (
     <main className="rounded-md overflow-hidden h-full bg-gradient-to-b from-zinc-900 to-zinc-950 text-white">
