@@ -37,7 +37,9 @@ const MainLayout = () => {
             <Outlet />
           </div>
         </ResizablePanel>
-        <ResizableHandle className='w-2 bg-black rounded-lg transition-colors' />
+       {!isMobile && (
+        <>
+         <ResizableHandle className='w-2 bg-black rounded-lg transition-colors' />
 
         {/* Right SideBar */ }
         <ResizablePanel defaultSize={20} minSize={isMobile ? 0 : 10} maxSize={30} collapsedSize={0}>
@@ -46,6 +48,8 @@ const MainLayout = () => {
           </ResizablePanel>
           <ResizableHandle className='w-2 bg-black rounded-lg transition-colors' />
         
+        </>
+       )}
       </ResizablePanelGroup>
       <PlaybackControls/>
     </div>
